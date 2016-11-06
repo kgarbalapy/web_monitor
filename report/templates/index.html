@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+
+</head>
+<body>
+    Results
+    <p>{% now "jS F Y H:i" %}</p>
+    <table style="width:100%">
+        <tr>
+            <td class="heading">counter</td>
+            <td class="heading">url</td>
+            <td class="heading">pattern</td>
+            <td class="heading">status</td>
+            <td class="heading">msg</td>
+            <td class="heading">matched</td>
+            <td class="heading">response time[sec]</td>
+        </tr>
+
+        {% for item in result%}
+        <tr>
+            <td>{{ forloop.counter}}</td>
+            <td>{{ item.url }}</td>
+            <td>{{ item.pattern }}</td>
+            <td>{{ item.status_code }}</td>
+            <td>{{ item.reason }}</td>
+            <td>{{ item.matched }}</td>
+            <td>{{ item.response_time|floatformat:3 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<p>total time: {{ total_time|floatformat:3 }} sec</p>
+</body>
+</html>
